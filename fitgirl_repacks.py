@@ -2,8 +2,6 @@
 # AUTHORS: Bioux, Ralkey
 
 import json
-import logging
-import os
 from http.cookiejar import CookieJar
 from urllib.parse import unquote
 from urllib.request import HTTPCookieProcessor, build_opener
