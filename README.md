@@ -1,3 +1,3 @@
 # qbtSearchPlugins
 
-Based on [Hydra Community Links](https://hydralinks.cloud/)
+Uses [Hydra Community Links](https://hydralinks.cloud/)
