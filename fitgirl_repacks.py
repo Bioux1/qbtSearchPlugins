@@ -1,7 +1,8 @@
-#VERSION: 1.0
+# VERSION: 1.1
 # AUTHORS: Bioux
 
 import json
+from datetime import datetime, timezone
 from urllib.parse import unquote
 from helpers import retrieve_url
 from novaprinter import prettyPrinter
@@ -23,13 +24,15 @@ class fitgirl_repacks(object):
 
         for result in response_json['downloads']:
             if any(term in result['title'].lower() for term in search_terms):
+                timestamp = int(datetime.strptime(result['uploadDate'], "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc).timestamp())
                 res = {'link': self.download_link(result),
                        'name': result['title'],
                        'size': result['fileSize'],
                        'seeds': '-1',
                        'leech': '-1',
                        'engine_url': self.url,
-                       'desc_link': '-1'}
+                       'desc_link': '-1',
+                       'pub_date': timestamp}
                 prettyPrinter(res)
 
     def download_link(self, result):
